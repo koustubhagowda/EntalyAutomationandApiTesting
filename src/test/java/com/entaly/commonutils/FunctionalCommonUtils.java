@@ -412,7 +412,7 @@ public class FunctionalCommonUtils extends PageObject {
 			}
 		};
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(21000);
 			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
 			wait.until(expectation);
 		} catch (Throwable error) {

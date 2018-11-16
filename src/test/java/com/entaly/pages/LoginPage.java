@@ -1,12 +1,20 @@
 package com.entaly.pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
+import com.entaly.StepDefinition;
 import com.entaly.commonutils.FunctionalCommonUtils;
+
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -14,6 +22,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 public class LoginPage extends PageObject {
+	
 
 	FunctionalCommonUtils CommonUtil = new FunctionalCommonUtils();
 
@@ -37,9 +46,6 @@ public class LoginPage extends PageObject {
 
 	@FindBy(xpath = "(//div[@class='padding-top-box card-box center-text'])[1]")
 	public WebElementFacade dashboard_page;
-
-	@FindBy(xpath = "//*[@id='root']/div[1]/nav/ol/span[2]/a")
-	public WebElementFacade report_list;
 
 	@FindBy(xpath = "//small[@class='fontSize12 form-text text-danger']")
 	public WebElementFacade verify;
@@ -79,6 +85,23 @@ public class LoginPage extends PageObject {
 
 	@FindBy(xpath = "//div[3]/button")
 	public WebElementFacade reset_submit;
+	
+	@FindBy(xpath = "//div[@class='sc-bwzfXH hyolra']")
+	public WebElementFacade dot_button;
+	
+	@FindBy(xpath = "//i[@class='material-icons box'] ")
+	public WebElementFacade checkbox_button;
+	
+	@FindBy(xpath = "(//button[@type='button'])[3]")
+	public WebElementFacade ok_button;
+	
+	@FindBy(xpath = "(//button[@type='button'])[2]")
+	public WebElementFacade fullscreen_button;
+	
+	@FindBy(xpath = "//a[@href='/applicationReports/1']")
+	public WebElementFacade inteligent_link;
+
+	private WebDriver webdriver;
 
 	public WebElementFacade getUniqueElementInPage() {
 		return reset_link;
@@ -212,7 +235,7 @@ public class LoginPage extends PageObject {
 
 	}
 
-	public void report_verify() throws InterruptedException {
+	public void report_verify() throws InterruptedException, AWTException {
 
 		int size = getDriver().findElements(By.xpath("//div[1]/div[1]/div/div/div")).size();
 		System.out.println(size);
@@ -223,13 +246,20 @@ public class LoginPage extends PageObject {
 			CommonUtil.waitForPageLoaded();
 			boolean verify = report_verify.isDisplayed();
 			System.out.println(verify);
-			CommonUtil.waitForElement(report_list);
-			report_list.click();
+			CommonUtil.waitForElement(fullscreen_button);
+			fullscreen_button.click();
+			CommonUtil.waitForPageLoaded();
+			Robot r = new Robot();
+			r.keyPress(KeyEvent.VK_ESCAPE);
+			r.keyRelease(KeyEvent.VK_ESCAPE);
+			CommonUtil.waitForElement(inteligent_link);
+			inteligent_link.click();
+			
 
 		}
 	}
 
-	public void reset_password(String valemail) {
+	public void forgot_email(String valemail) {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
 		login.click();
@@ -257,7 +287,8 @@ public class LoginPage extends PageObject {
 		CommonUtil.waitForElement(gmail_next);
 		gmail_next.click();
 		gmail_button.click();
-		CommonUtil.waitForElement(gmail_frst_div);
+//		CommonUtil.waitForElement(gmail_frst_div);
+		CommonUtil.waitForPageLoaded();
 		gmail_frst_div.click();
 		WebElement element = getDriver().findElement(By.xpath("//center[3]/a"));
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -277,7 +308,7 @@ public class LoginPage extends PageObject {
 
 	}
 
-	public void resetemail_blank() {
+	public void forgotemail_blank() {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
 		login.click();
@@ -292,14 +323,13 @@ public class LoginPage extends PageObject {
 
 	}
 
-	public void verify_reset_blank_email() throws InterruptedException {
-		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']"))
-				.getText();
+	public void verify_forgot_blank_email() throws InterruptedException {
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("Please enter the Email ID", actual);
 	}
 
-	public void reset_invalemail(String invalemail) {
+	public void forgot_invalemail(String invalemail) {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
 		login.click();
@@ -340,6 +370,7 @@ public class LoginPage extends PageObject {
 		// driver.close();
 		// driver.switchTo().window(tabs2.get(1));
 		// CommonUtil.waitForPageLoaded();
+		CommonUtil.waitForElement(confirm_password);
 		confirm_password.sendKeys(pswrd);
 		CommonUtil.waitForElement(reset_submit);
 		reset_submit.click();
@@ -389,16 +420,13 @@ public class LoginPage extends PageObject {
 		confirm_password.sendKeys("password");
 		CommonUtil.waitForElement(reset_submit);
 		reset_submit.click();
-
-	}
-
+}
 	public void verify_invalid_resetpswrd() {
-		CommonUtil.waitForPageLoaded();
 		String actual = getDriver().findElement(By.xpath("//*[@id='root']/div[1]/div/div[1]/small")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("Please enter valid password.", actual);
 	}
-	
+
 	public void valid_resetpswrd() {
 		new_password.clear();
 		CommonUtil.waitForElement(new_password);
@@ -420,4 +448,65 @@ public class LoginPage extends PageObject {
 //		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to\n" + "*****@qwinix.io\n" + ".", actual);
 		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to *****@qwinix.io.", actual);
 	}
+	
+	
+	public void verify_at_in_invalemail() {
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
+		System.out.println(actual);
+		Assert.assertEquals("Please enter the correct email id", actual);
+	}
+	public void blank_email_with_navigation() {
+		hambarger_button.click();
+		CommonUtil.waitForElement(login);
+		login.click();
+		CommonUtil.waitForElement(next);
+		dot_button.click();
+	}
+	public void invalid_email_with_dot(String invalemail) {
+		hambarger_button.click();
+		CommonUtil.waitForElement(login);
+		login.click();
+		CommonUtil.waitForElement(loginemail);
+		loginemail.sendKeys(invalemail);
+		CommonUtil.waitForElement(next);
+		dot_button.click();
+	}
+	public void terms_condition() {
+		CommonUtil.waitForElement(checkbox_button);
+		checkbox_button.click();
+		CommonUtil.waitForElement(submit);
+		submit.click();
+		CommonUtil.waitForElement(ok_button);
+		ok_button.click();
+		
+	}
+	public void verify_terms_condition() {
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
+		System.out.println(actual);
+		Assert.assertEquals("Please Accept terms & Conditions", actual);
+	}
+	public void valid_with_term_condition(String valemail,String valpswrd) {
+		hambarger_button.click();
+		CommonUtil.waitForElement(login);
+		login.click();
+		CommonUtil.waitForElement(loginemail);
+		loginemail.sendKeys(valemail);
+		CommonUtil.waitForElement(next);
+		next.click();
+		CommonUtil.waitForElement(password);
+		password.sendKeys(valpswrd);
+		CommonUtil.waitForElement(checkbox_button);
+		checkbox_button.click();
+		CommonUtil.waitForElement(submit);
+		submit.click();
+		CommonUtil.waitForElement(ok_button);
+		ok_button.click();
+		
+	}
+	public void verify_forgot_in_at_email() {
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
+		System.out.println(actual);
+		Assert.assertEquals("Please enter the correct Email ID", actual);
+	}
+	
 }
