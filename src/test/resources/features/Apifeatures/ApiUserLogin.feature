@@ -1,5 +1,5 @@
-@Entaly_api_launches
-Feature: This feature is to test the Entaly API Launch Services
+@Entaly_api_login
+Feature: This feature is to test the Entaly API Login Services
 
 	@Post_user_invalid_api
 	Scenario: This scenario is to post the data related to invalid api of user validation

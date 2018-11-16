@@ -317,11 +317,11 @@ public class LoginPage extends PageObject {
 	}
 
 	public void rsetpswrd_empty() {
-		navigate_email();
 		ArrayList<String> tabs2 = new ArrayList<String>(getDriver().getWindowHandles());
 		getDriver().switchTo().window(tabs2.get(0));
 		getDriver().close();
 		getDriver().switchTo().window(tabs2.get(1));
+		CommonUtil.waitForElement(reset_submit);
 		reset_submit.click();
 	}
 
@@ -381,9 +381,11 @@ public class LoginPage extends PageObject {
 	}
 
 	public void invalid_resetpswrd() {
+		new_password.clear();
 		CommonUtil.waitForElement(new_password);
 		new_password.sendKeys("password");
 		CommonUtil.waitForElement(confirm_password);
+		confirm_password.clear();
 		confirm_password.sendKeys("password");
 		CommonUtil.waitForElement(reset_submit);
 		reset_submit.click();
@@ -395,5 +397,27 @@ public class LoginPage extends PageObject {
 		String actual = getDriver().findElement(By.xpath("//*[@id='root']/div[1]/div/div[1]/small")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("Please enter valid password.", actual);
+	}
+	
+	public void valid_resetpswrd() {
+		new_password.clear();
+		CommonUtil.waitForElement(new_password);
+		new_password.sendKeys("Password1234");
+		CommonUtil.waitForElement(confirm_password);
+		confirm_password.clear();
+		confirm_password.sendKeys("Password1234");
+		CommonUtil.waitForElement(reset_submit);
+		reset_submit.click();
+	}
+	public void verify_valid_resetpswrd() {
+		String actual = getDriver().findElement(By.xpath("//*[@id='root']/div[1]/div/div/span[1]")).getText();
+		System.out.println(actual);
+		Assert.assertEquals("You have successfully reset your password.", actual);
+	}
+	public void verify_forgot_validemail() {
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-muted']")).getText();
+		System.out.println(actual);
+//		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to\n" + "*****@qwinix.io\n" + ".", actual);
+		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to *****@qwinix.io.", actual);
 	}
 }

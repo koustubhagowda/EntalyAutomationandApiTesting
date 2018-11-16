@@ -1,11 +1,10 @@
 @Login
-Feature: As a end user
-  I should able to login into the entaly application
+Feature: This feature is to test the Entaly login functionality
 
   Background: user able to login
     Given I am on home page
 
-  @blank_email
+  @login_blank_email
   Scenario: trying to leave the email field as a blank
     When I leave email field as a  blank and click the next button
     Then I should get blank email error

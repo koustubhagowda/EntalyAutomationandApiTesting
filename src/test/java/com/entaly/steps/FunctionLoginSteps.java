@@ -156,12 +156,13 @@ public class FunctionLoginSteps {
 
 	@Then("^I should redirect to the email and reset the password$")
 	public void i_should_redirect_to_the_email_and_reset_the_password() throws Throwable {
-		objLS.navigate_email();
+		objLS.verify_forgot_validemail();
 	}
 
 	@When("^I leave the new password and confirm password as a blank \"([^\"]*)\" and click on submit button$")
 	public void i_leave_the_new_password_and_confirm_password_as_a_blank_and_click_on_submit_button(String pswrd)
 			throws Throwable {
+		objLS.navigate_email();
 		objLS.rsetpswrd_empty();
 		objLS.verify_resetpswrd_empty();
 		objLS.newpswrd_empty(pswrd);
@@ -177,19 +178,20 @@ public class FunctionLoginSteps {
 
 	@Then("^I should get error message as new password cannot be empty$")
 	public void i_should_get_error_message_as_new_password_cannot_be_empty() throws Throwable {
-		objLS.verify_resetpswrd_empty();
+		objLS.valid_resetpswrd();
+		objLS.verify_valid_resetpswrd();
 	}
 
-	@When("^I leave the new password field as a blank and and enter confirm password \"([^\"]*)\" and click on submit button$")
-	public void i_leave_the_new_password_field_as_a_blank_and_and_enter_confirm_password_and_click_on_submit_button(
-			String pswrd) throws Throwable {
-
-		objLS.newpswrd_empty(pswrd);
-	}
-
-	@Then("^I should see the error message as new password cannot be empty$")
-	public void i_should_see_the_error_message_as_new_password_cannot_be_empty() throws Throwable {
-		objLS.verify_resetpswrd_empty();
-	}
+//	@When("^I leave the new password field as a blank and and enter confirm password \"([^\"]*)\" and click on submit button$")
+//	public void i_leave_the_new_password_field_as_a_blank_and_and_enter_confirm_password_and_click_on_submit_button(
+//			String pswrd) throws Throwable {
+//
+//		objLS.newpswrd_empty(pswrd);
+//	}
+//
+//	@Then("^I should see the error message as new password cannot be empty$")
+//	public void i_should_see_the_error_message_as_new_password_cannot_be_empty() throws Throwable {
+//		objLS.verify_resetpswrd_empty();
+//	}
 
 }
