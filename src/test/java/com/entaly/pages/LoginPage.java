@@ -325,7 +325,7 @@ public class LoginPage extends PageObject {
 		gmail_frst_div.click();
 		WebElement element = getDriver().findElement(By.xpath("//center[3]/a"));
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-//		CommonUtil.waitForElement(reset_link);
+		// CommonUtil.waitForElement(reset_link);
 		String token = reset_link.getText();
 		System.out.println(token);
 		String Code = getDriver().findElement(By.xpath("//center[3]/a")).getText();
@@ -353,6 +353,14 @@ public class LoginPage extends PageObject {
 		submit.click();
 
 	}
+
+	// public void verify_forgot_blank_email() throws InterruptedException {
+	// String actual =
+	// getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text
+	// text-danger']")).getText();
+	// System.out.println(actual);
+	// Assert.assertEquals("Please enter the Email ID", actual);
+	// }
 
 	public void verify_forgot_validemail() {
 		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-muted']"))

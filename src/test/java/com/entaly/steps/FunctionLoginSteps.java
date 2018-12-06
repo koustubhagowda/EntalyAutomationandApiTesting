@@ -174,10 +174,10 @@ public class FunctionLoginSteps {
 		objLS.valemail_with_two_attempts(valemail, invalpswrd);
 	}
 
-//	@When("^I click on terms and condition$")
-//	public void i_click_on_terms_and_condition() throws Throwable {
-//		objLS.terms_condition();
-//	}
+	// @When("^I click on terms and condition$")
+	// public void i_click_on_terms_and_condition() throws Throwable {
+	// objLS.terms_condition();
+	// }
 
 	@Then("^I should see get left two attempt error$")
 	public void i_should_see_get_left_two_attempt_error() throws Throwable {
@@ -190,10 +190,10 @@ public class FunctionLoginSteps {
 		objLS.valemail_with_two_attempts(valemail, invalpswrd);
 	}
 
-//	@When("^I click on terms and condition button$")
-//	public void i_click_on_terms_and_condition_button() throws Throwable {
-//		objLS.terms_condition();
-//	}
+	// @When("^I click on terms and condition button$")
+	// public void i_click_on_terms_and_condition_button() throws Throwable {
+	// objLS.terms_condition();
+	// }
 
 	@Then("^I should see get left one attempt error$")
 	public void i_should_see_get_left_one_attempt_error() throws Throwable {
@@ -280,5 +280,21 @@ public class FunctionLoginSteps {
 	public void i_should_redirect_to_the_email_and_reset_the_password() throws Throwable {
 		objLS.verify_forgot_validemail();
 	}
+
+	// @When("^I leave the new password field as a blank and and enter confirm
+	// password \"([^\"]*)\" and click on submit button$")
+	// public void
+	// i_leave_the_new_password_field_as_a_blank_and_and_enter_confirm_password_and_click_on_submit_button(
+	// String pswrd) throws Throwable {
+	//
+	// objLS.newpswrd_empty(pswrd);
+	// }
+	//
+	// @Then("^I should see the error message as new password cannot be empty$")
+	// public void
+	// i_should_see_the_error_message_as_new_password_cannot_be_empty() throws
+	// Throwable {
+	// objLS.verify_resetpswrd_empty();
+	// }
 
 }
