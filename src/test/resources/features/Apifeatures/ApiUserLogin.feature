@@ -142,46 +142,82 @@ Feature: This feature is to test the Entaly API Login Services
 		Then the report launch data retrieved successfully and verified with response body
 		
 	@Post_forgot_pwd_invalid_api
-	Scenario: This scenario is to get the data related to invalid forgot password api
+	Scenario: This scenario is to post the data related to invalid forgot password api
 		When I send end point with BasePath that allows a user need to post invalid forgot password api data
 		Then It launches successfully and verifies a error response as "Not Found"
 	
 	@Post_forgot_pwd_blank_email_data
-	Scenario: This scenario is to get the data related to blank email of forgot password api
+	Scenario: This scenario is to post the data related to blank email of forgot password api
 		When I send end point with BasePath that allows a user need to post blank email credential api
 		Then It launches successfully and verified error response as "Bad Request"
 	
 	@Post_forgot_pwd_blank_reset_pwd_data
-	Scenario: This scenario is to get the data related to blank reset password of forgot password api
+	Scenario: This scenario is to post the data related to blank reset password of forgot password api
 		When I send end point with BasePath that allows a user need to post blank reset password credential api
 		Then It launches successfully and verified response error as "Bad Request"
 	
 	@Post_forgot_pwd_invalid_email_key
-	Scenario: This scenario is to get the data related to invalid email key of forgot password api
+	Scenario: This scenario is to post the data related to invalid email key of forgot password api
 		When I send end point with BasePath that allows a user need to post with invalid email key
 		Then It launches successfully and verified with response error "Bad Request"
 	
 	@Post_forgot_pwd_invalid_email_value
-	Scenario: This scenario is to get the data related to invalid email value of forgot password api
+	Scenario: This scenario is to post the data related to invalid email value of forgot password api
 		When I send end point with BasePath that allows a user need to post with invalid email value
 		Then It launches successfully and verified with response as "User not found"
 	
 	@Post_forgot_pwd_invalid_reset_pwd_link_key
-	Scenario: This scenario is to get the data related to invalid reset password link key of forgot password api
+	Scenario: This scenario is to post the data related to invalid reset password link key of forgot password api
 		When I send end point with BasePath that allows a user need to post with invalid reset password link key
 		Then It launches successfully and verified with error response "Bad Request"
 	
 	@Post_forgot_pwd_blank_header
-	Scenario: This scenario is to get the data related to blank header of forgot password api
+	Scenario: This scenario is to post the data related to blank header of forgot password api
 		When I send end point with BasePath that allows a user to post with blank header of forgot password api
 		Then It launched successfully and verified with error response "Unsupported Media Type"
 	
 	@Post_forgot_pwd_blank_body
-	Scenario: This scenario is to get the data related to blank body of forgot password api
+	Scenario: This scenario is to post the data related to blank body of forgot password api
 		When I send end point with BasePath that allows a user to post with blank body of forgot password api
 		Then It launched successfully and verifies with error response "Bad Request"
 	
 	@Post_forgot_password_api
-	Scenario: This scenario is to get the data related to forgot password api
+	Scenario: This scenario is to post the data related to forgot password api
 		When I send end point with BasePath that allows a user need to post forgot password api data
 		Then It launches data created successfully and verified the status code as '0'
+		
+	@put_reset_pwd_invalid_api
+	Scenario: This scenario is to put the data related to invalid reset password api
+		When I get the access token from email
+		And I send end point with BasePath that allows a user need to put invalid reset password api data
+		Then It launched successfully and verified a error response as "Not Found"
+		
+	@put_reset_pwd_blank_password_data
+	Scenario: This scenario is to put the data related to blank password of reset password api
+		When I send end point with BasePath that allows a user need to put blank password credential api
+		Then It launched successfully and verified error response as "Bad Request"
+		
+	@put_reset_pwd_blank_token_data
+	Scenario: This scenario is to put the data related to blank token of reset password api
+		When I send end point with BasePath that allows a user need to put blank token credential api
+		Then It launched successfully and verified response error as "Bad Request"
+		
+	@put_reset_pwd_invalid_pwd_key
+	Scenario: This scenario is to put the data related to invalid password key of reset password api
+		When I send end point with BasePath that allows a user need to put with invalid password key
+		Then It launched successfully and verified with response error as "Bad Request"
+		
+	@put_reset_pwd_invalid_token_key
+	Scenario: This scenario is to put the data related to invalid token key of reset password api
+		When I send end point with BasePath that allows a user need to put with invalid token key
+		Then It launched successfully and verified with response as "Bad Request"
+		
+	@put_reset_pwd_invalid_token_value
+	Scenario: This scenario is to put the data related to invalid token value of reset password api
+		When I send end point with BasePath that allows a user need to put with invalid token value
+		Then It launched successfully and verified with response error message as "Invalid token"
+		
+	@put_reset_pwd_valid_api
+	Scenario: This scenario is to put the data related to reset password api
+		When I send end point with BasePath that allows a user need to put reset password api data
+		Then It launched data created successfully and verified the response status code as '0'

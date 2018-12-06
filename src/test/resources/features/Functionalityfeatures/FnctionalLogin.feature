@@ -132,4 +132,4 @@ Feature: This feature is to test the Entaly login functionality
   @forgotpassword_valemail
   Scenario: trying to reset the password
     When I click on forgot password and I entered valid email "kkeshavaswamy@qwinix.io"
-   Then I should redirect to the email and reset the password
+		Then I should redirect to the email and reset the password
