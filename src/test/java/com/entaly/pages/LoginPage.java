@@ -356,6 +356,13 @@ public class LoginPage extends PageObject {
 		submit.click();
 
 	}
+
+// 	public void verify_forgot_blank_email() throws InterruptedException {
+// 		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
+// 		System.out.println(actual);
+// 		Assert.assertEquals("Please enter the Email ID", actual);
+// 	}
+
 	public void verify_forgot_validemail() {
 		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-muted']")).getText();
 		System.out.println(actual);
@@ -451,6 +458,7 @@ public class LoginPage extends PageObject {
 		System.out.println(actual);
 		Assert.assertEquals("Please enter valid password.", actual);
 	}
+
 	public void valid_resetpswrd() {
 		new_password.clear();
 		CommonUtil.waitForElement(new_password);
@@ -465,6 +473,12 @@ public class LoginPage extends PageObject {
 		String actual = getDriver().findElement(By.xpath("//*[@id='root']/div[1]/div/div/span[1]")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("You have successfully reset your password.", actual);
+	}
+	public void verify_forgot_validemail() {
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-muted']")).getText();
+		System.out.println(actual);
+//		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to\n" + "*****@qwinix.io\n" + ".", actual);
+		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to *****@qwinix.io.", actual);
 	}
 	
 	public void blank_email_with_navigation() {

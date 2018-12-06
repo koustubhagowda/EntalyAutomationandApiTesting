@@ -289,4 +289,16 @@ public class FunctionLoginSteps {
 
 	
 
+//	@When("^I leave the new password field as a blank and and enter confirm password \"([^\"]*)\" and click on submit button$")
+//	public void i_leave_the_new_password_field_as_a_blank_and_and_enter_confirm_password_and_click_on_submit_button(
+//			String pswrd) throws Throwable {
+//
+//		objLS.newpswrd_empty(pswrd);
+//	}
+//
+//	@Then("^I should see the error message as new password cannot be empty$")
+//	public void i_should_see_the_error_message_as_new_password_cannot_be_empty() throws Throwable {
+//		objLS.verify_resetpswrd_empty();
+//	}
+
 }

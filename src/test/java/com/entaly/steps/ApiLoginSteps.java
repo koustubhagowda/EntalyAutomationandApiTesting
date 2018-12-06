@@ -6,6 +6,10 @@ import static net.serenitybdd.rest.SerenityRest.then;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
+import com.entaly.commonutils.FunctionalCommonUtils;
+import com.entaly.pages.LoginPage;
 
 //import com.entaly.commonutils.ApiCommonUtils;
 
@@ -16,8 +20,12 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.PageObject;
 
-public class ApiLoginSteps {
+public class ApiLoginSteps extends PageObject{
+	LoginPage functionality = new LoginPage();
+	FunctionalCommonUtils CommonUtil = new FunctionalCommonUtils();
 	// ApiCommonUtils commonobj = new ApiCommonUtils();
 	String baseuri = "http://entalyapi.eastus.cloudapp.azure.com:5375";
 	public Response response;
@@ -714,6 +722,116 @@ public class ApiLoginSteps {
 		int scode = Integer.parseInt(statuscode);
 		System.out.println("Actual--->" + scode + "  Expected--->" + code);
 		Assert.assertEquals(code, scode);
+	}
+	
+	@When("^I get the access token from email$")
+	public void i_get_the_access_token_from_email() throws Throwable {
+		getDriver().manage().window().maximize();
+		getDriver().get("https://accounts.google.com");// here mention mail id
+														// url
+		functionality.gmail_email.sendKeys("kkeshavaswamy@qwinix.io");
+		CommonUtil.waitForElement(functionality.gmail_next);
+		functionality.gmail_next.click();
+		CommonUtil.waitForElement(functionality.gmail_password);
+		functionality.gmail_password.sendKeys("keshav1994,");
+		CommonUtil.waitForElement(functionality.gmail_next);
+		functionality.gmail_next.click();
+		functionality.gmail_button.click();
+//		CommonUtil.waitForElement(gmail_frst_div);
+		CommonUtil.waitForPageLoaded();
+		functionality.gmail_frst_div.click();
+		WebElement element = getDriver().findElement(By.xpath("//center[3]/a"));
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+		CommonUtil.waitForElement(functionality.reset_link);
+		String token = functionality.reset_link.getText();
+		System.out.println(token);
+		String Code = getDriver().findElement(By.xpath("//center[3]/a")).getText();
+		String[] parts = Code.split("token=");
+		System.out.println(parts);
+		String access_token = parts[1];
+		parts = access_token.split("&email=kkeshavaswamy@qwinix.io");
+		access_token = parts[0];
+		System.out.println(access_token);
+		Serenity.setSessionVariable("Token").to(access_token);
+	}
+	
+	@When("^I send end point with BasePath that allows a user need to put invalid reset password api data$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_invalid_reset_password_api_data() throws Throwable {
+		String Token = Serenity.sessionVariableCalled("Token").toString();
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		JSONObject json = new JSONObject();
+		json.put("password", "Password1234");
+		json.put("token", Token);
+		request.body(json.toJSONString());
+		response = request.baseUri(baseuri).basePath("/auth/rp").put();
+		
+	}
+
+	@Then("^It launched successfully and verified a error response as \"([^\"]*)\"$")
+	public void it_launched_successfully_and_verified_a_error_response_as(String arg1) throws Throwable {
+		ResponseBody body = response.getBody();
+		System.out.println("Response Body is: " + body.asString());
+	}
+
+	@When("^I send end point with BasePath that allows a user need to put blank password credential api$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_blank_password_credential_api() throws Throwable {
+	    
+	}
+
+	@Then("^It launched successfully and verified error response as \"([^\"]*)\"$")
+	public void it_launched_successfully_and_verified_error_response_as(String arg1) throws Throwable {
+	    
+	}
+
+	@When("^I send end point with BasePath that allows a user need to put blank token credential api$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_blank_token_credential_api() throws Throwable {
+	    
+	}
+
+	@Then("^It launched successfully and verified response error as \"([^\"]*)\"$")
+	public void it_launched_successfully_and_verified_response_error_as(String arg1) throws Throwable {
+	    
+	}
+
+	@When("^I send end point with BasePath that allows a user need to put with invalid password key$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_with_invalid_password_key() throws Throwable {
+	    
+	}
+
+	@Then("^It launched successfully and verified with response error as \"([^\"]*)\"$")
+	public void it_launched_successfully_and_verified_with_response_error_as(String arg1) throws Throwable {
+	    
+	}
+
+	@When("^I send end point with BasePath that allows a user need to put with invalid token key$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_with_invalid_token_key() throws Throwable {
+	    
+	}
+
+	@Then("^It launched successfully and verified with response as \"([^\"]*)\"$")
+	public void it_launched_successfully_and_verified_with_response_as(String arg1) throws Throwable {
+	   
+	}
+
+	@When("^I send end point with BasePath that allows a user need to put with invalid token value$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_with_invalid_token_value() throws Throwable {
+	    
+	}
+
+	@Then("^It launched successfully and verified with response error message as \"([^\"]*)\"$")
+	public void it_launched_successfully_and_verified_with_response_error_message_as(String arg1) throws Throwable {
+	    
+	}
+
+	@When("^I send end point with BasePath that allows a user need to put reset password api data$")
+	public void i_send_end_point_with_BasePath_that_allows_a_user_need_to_put_reset_password_api_data() throws Throwable {
+	    
+	}
+
+	@Then("^It launched data created successfully and verified the response status code as '(\\d+)'$")
+	public void it_launched_data_created_successfully_and_verified_the_response_status_code_as(int arg1) throws Throwable {
+	    
 	}
 
 }
