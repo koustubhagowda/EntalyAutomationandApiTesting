@@ -3,6 +3,7 @@ package com.entaly;
 import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,6 +23,7 @@ import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.core.util.SystemEnvironmentVariables;
 
 public class StepDefinition {
+	public static WebDriver driver;
 	@Steps
 	FunctionalCommonUtils commonutilfunc;
 	LoginPage loginPage = new LoginPage();
