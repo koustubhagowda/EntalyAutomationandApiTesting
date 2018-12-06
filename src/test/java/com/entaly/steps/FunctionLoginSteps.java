@@ -13,8 +13,7 @@ import net.serenitybdd.core.Serenity;
 public class FunctionLoginSteps {
 	LoginPage objLS;
 	FunctionalCommonUtils commonUtil;
-	
-	
+
 	@Given("^I am on home page$")
 	public void i_am_on_home_page() throws Throwable {
 		String Url = Serenity.sessionVariableCalled("url").toString();
@@ -29,8 +28,8 @@ public class FunctionLoginSteps {
 
 	@Then("^I should get error \"([^\"]*)\"$")
 	public void i_should_get_error(String excepted) throws Throwable {
-		objLS.verify__email_errors(excepted);	}	
-	   
+		objLS.verify__email_errors(excepted);
+	}
 
 	@When("^I enter the invalid email id \"([^\"]*)\" and click on submit button$")
 	public void i_enter_the_invalid_email_id_and_click_on_submit_button(String invalemail) throws Throwable {
@@ -39,9 +38,9 @@ public class FunctionLoginSteps {
 
 	@Then("^I should get  \"([^\"]*)\"$")
 	public void i_should_get(String excepted) throws Throwable {
-		 objLS.verify__email_errors(excepted);
+		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter the email id \"([^\"]*)\" and click on submit button$")
 	public void i_enter_the_email_id_and_click_on_submit_button(String invalemail) throws Throwable {
 		objLS.invalid_email(invalemail);
@@ -51,17 +50,17 @@ public class FunctionLoginSteps {
 	public void i_should_see_the_invalid_error_message(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter the emailid \"([^\"]*)\" and click on submit button$")
 	public void i_enter_the_emailid_and_click_on_submit_button(String invalemail) throws Throwable {
 		objLS.invalid_email(invalemail);
 	}
 
-
 	@Then("^I should  see the invalid error \"([^\"]*)\"$")
 	public void i_should_see_the_invalid_error(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
+
 	@When("^I enter the email \"([^\"]*)\" and click on submit button$")
 	public void i_enter_the_email_and_click_on_submit_button(String invalemail) throws Throwable {
 		objLS.invalid_email(invalemail);
@@ -71,7 +70,7 @@ public class FunctionLoginSteps {
 	public void i_should_see_the_message_as(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter  email \"([^\"]*)\" and click on submit button$")
 	public void i_enter_email_and_click_on_submit_button(String invalemail) throws Throwable {
 		objLS.invalid_email(invalemail);
@@ -81,28 +80,27 @@ public class FunctionLoginSteps {
 	public void i_should_see_the(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I leave the email field as a blank and click on dot$")
 	public void i_leave_the_email_field_as_a_blank_and_click_on_dot() throws Throwable {
-	   objLS. blank_email_with_navigation();
+		objLS.blank_email_with_navigation();
 	}
 
 	@Then("^I should get error message \"([^\"]*)\"$")
 	public void i_should_get_error_message(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
-	
+
 	@When("^I entered invalid email \"([^\"]*)\" and click on dot$")
 	public void i_entered_invalid_email_and_click_on_dot(String invalemail) throws Throwable {
-	    objLS.invalid_email_with_dot(invalemail);
+		objLS.invalid_email_with_dot(invalemail);
 	}
 
 	@Then("^I should get the error as \"([^\"]*)\"$")
 	public void i_should_get_the_error_as(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter the email id \"([^\"]*)\" and click on dot$")
 	public void i_enter_the_email_id_and_click_on_dot(String invalemail) throws Throwable {
 		objLS.invalid_email_with_dot(invalemail);
@@ -112,7 +110,7 @@ public class FunctionLoginSteps {
 	public void i_should_see_the_invalid_message(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter the emailid \"([^\"]*)\" and click on dot$")
 	public void i_enter_the_emailid_and_click_on_dot(String invalemail) throws Throwable {
 		objLS.invalid_email_with_dot(invalemail);
@@ -122,8 +120,7 @@ public class FunctionLoginSteps {
 	public void i_should_get_invalid_error(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
-	
+
 	@When("^I enter the e-mail \"([^\"]*)\" and click on submit button$")
 	public void i_enter_the_e_mail_and_click_on_submit_button(String invalemail) throws Throwable {
 		objLS.invalid_email_with_dot(invalemail);
@@ -143,12 +140,6 @@ public class FunctionLoginSteps {
 	public void i_should_see_email_error_message(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
-	
-	
-	
-	
-
 
 	@When("^I enter valid email \"([^\"]*)\"and leave the password field as a blank and click on submit$")
 	public void i_enter_valid_email_and_leave_the_password_field_as_a_blank_and_click_on_submit(String email)
@@ -160,55 +151,58 @@ public class FunctionLoginSteps {
 	public void i_should_get_blank_password_error(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
-	@When("^I enter  email \"([^\"]*)\" and valid password \"([^\"]*)\" and withou click on condition$")
-	public void i_enter_email_and_valid_password_and_withou_click_on_condition(String valemail, String valpswrd) throws Throwable {
-	    objLS.valid_login(valemail, valpswrd);
-	}
 
-	@Then("^I should see the terms and condition error message \"([^\"]*)\"$")
-	public void i_should_see_the_terms_and_condition_error_message(String excepted) throws Throwable {
-		objLS.verify__email_errors(excepted);
-	}
-	
+	// @When("^I enter email \"([^\"]*)\" and valid password \"([^\"]*)\" and
+	// withou click on condition$")
+	// public void
+	// i_enter_email_and_valid_password_and_withou_click_on_condition(String
+	// valemail, String valpswrd)
+	// throws Throwable {
+	// objLS.valid_login(valemail, valpswrd);
+	// }
+	//
+	// @Then("^I should see the terms and condition error message
+	// \"([^\"]*)\"$")
+	// public void i_should_see_the_terms_and_condition_error_message(String
+	// excepted) throws Throwable {
+	// objLS.verify__email_errors(excepted);
+	// }
+
 	@When("^I entered valid email\"([^\"]*)\" and invalid password \"([^\"]*)\" and click on submit button$")
-	public void i_entered_valid_email_and_invalid_password_and_click_on_submit_button(String valemail, String invalpswrd) throws Throwable {
+	public void i_entered_valid_email_and_invalid_password_and_click_on_submit_button(String valemail,
+			String invalpswrd) throws Throwable {
 		objLS.valemail_with_two_attempts(valemail, invalpswrd);
 	}
 
-	@When("^I click on terms and condition$")
-	public void i_click_on_terms_and_condition() throws Throwable {
-	    objLS.terms_condition();
-	}
+//	@When("^I click on terms and condition$")
+//	public void i_click_on_terms_and_condition() throws Throwable {
+//		objLS.terms_condition();
+//	}
 
 	@Then("^I should see get left two attempt error$")
 	public void i_should_see_get_left_two_attempt_error() throws Throwable {
 		objLS.verify_two_attempt_text();
 	}
-	
+
 	@When("^I enter valid email\"([^\"]*)\" and invalid password \"([^\"]*)\" and click on submit button$")
-	public void i_enter_valid_email_and_invalid_password_and_click_on_submit_button(String valemail, String invalpswrd) throws Throwable {
+	public void i_enter_valid_email_and_invalid_password_and_click_on_submit_button(String valemail, String invalpswrd)
+			throws Throwable {
 		objLS.valemail_with_two_attempts(valemail, invalpswrd);
 	}
 
-	@When("^I click on terms and condition button$")
-	public void i_click_on_terms_and_condition_button() throws Throwable {
-		objLS.terms_condition();
-	}
+//	@When("^I click on terms and condition button$")
+//	public void i_click_on_terms_and_condition_button() throws Throwable {
+//		objLS.terms_condition();
+//	}
 
 	@Then("^I should see get left one attempt error$")
 	public void i_should_see_get_left_one_attempt_error() throws Throwable {
 		objLS.verify_one_attempt_text();
 	}
 
-
-
-
-
-
 	@When("^I enter valid email \"([^\"]*)\" and password \"([^\"]*)\" click on condition$")
 	public void i_enter_valid_email_and_password_click_on_condition(String valemail, String valpswrd) throws Throwable {
-	    objLS.valid_with_term_condition(valemail, valpswrd);
+		objLS.valid_with_term_condition(valemail, valpswrd);
 	}
 
 	@Then("^I should see the dashboard page$")
@@ -236,6 +230,7 @@ public class FunctionLoginSteps {
 	public void i_should_see_the_error_message(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
+
 	@When("^I enter the email id \"([^\"]*)\" and click on submit in forgot password page$")
 	public void i_enter_the_email_id_and_click_on_submit_in_forgot_password_page(String invalemail) throws Throwable {
 		objLS.forgot_invalemail(invalemail);
@@ -245,18 +240,17 @@ public class FunctionLoginSteps {
 	public void i_should_see_the_invalid_message_in_forgot_password(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter the email id \"([^\"]*)\" in forgot password page and click on submit$")
 	public void i_enter_the_email_id_in_forgot_password_page_and_click_on_submit(String invalemail) throws Throwable {
 		objLS.forgot_invalemail(invalemail);
 	}
-	
+
 	@Then("^I should  get invalid error in forgot password page \"([^\"]*)\"$")
 	public void i_should_get_invalid_error_in_forgot_password_page(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
 
-	
 	@When("^I enter the e-mail \"([^\"]*)\" in forgot password page and click on submit$")
 	public void i_enter_the_e_mail_in_forgot_password_page_and_click_on_submit(String invalemail) throws Throwable {
 		objLS.forgot_invalemail(invalemail);
@@ -266,7 +260,7 @@ public class FunctionLoginSteps {
 	public void i_see_messge_as(String excepted) throws Throwable {
 		objLS.verify__email_errors(excepted);
 	}
-	
+
 	@When("^I enter the e mail-id \"([^\"]*)\" in forgot password page and click on submit$")
 	public void i_enter_the_e_mail_id_in_forgot_password_page_and_click_on_submit(String invalemail) throws Throwable {
 		objLS.forgot_invalemail(invalemail);
@@ -286,7 +280,5 @@ public class FunctionLoginSteps {
 	public void i_should_redirect_to_the_email_and_reset_the_password() throws Throwable {
 		objLS.verify_forgot_validemail();
 	}
-
-	
 
 }

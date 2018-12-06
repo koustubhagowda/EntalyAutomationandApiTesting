@@ -1,4 +1,4 @@
-@Entaly_api_launches
+@Entaly_api_login
 Feature: This feature is to test the Entaly API Launch Services
 
 	@Post_user_invalid_api

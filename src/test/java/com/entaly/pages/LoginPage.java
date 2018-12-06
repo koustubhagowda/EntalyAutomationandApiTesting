@@ -15,18 +15,16 @@ import org.openqa.selenium.interactions.Actions;
 import com.entaly.StepDefinition;
 import com.entaly.commonutils.FunctionalCommonUtils;
 
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 public class LoginPage extends PageObject {
-	
-//	public WebDriver driver = StepDefinition.driver;
+
+	// public WebDriver driver = StepDefinition.driver;
 	FunctionalCommonUtils CommonUtil = new FunctionalCommonUtils();
 	Actions action;
-	
 
 	@FindBy(xpath = "(//button[@type='button'])[1]")
 	public WebElementFacade hambarger_button;
@@ -87,81 +85,78 @@ public class LoginPage extends PageObject {
 
 	@FindBy(xpath = "//div[3]/button")
 	public WebElementFacade reset_submit;
-	
+
 	@FindBy(xpath = "//div[@class='sc-bwzfXH hyolra']")
 	public WebElementFacade dot_button;
-	
+
 	@FindBy(xpath = "//i[@class='material-icons box'] ")
 	public WebElementFacade checkbox_button;
-	
+
 	@FindBy(xpath = "(//button[@type='button'])[3]")
 	public WebElementFacade ok_button;
-	
+
 	@FindBy(xpath = "(//button[@type='button'])[2]")
 	public WebElementFacade fullscreen_button;
-	
+
 	@FindBy(xpath = "//a[@href='/applicationReports/1']")
 	public WebElementFacade inteligent_link;
-	
-	@FindBy(xpath ="(//div[@class='padding-top-box card-box center-text'])[3]")
+
+	@FindBy(xpath = "(//div[@class='padding-top-box card-box center-text'])[3]")
 	public WebElementFacade data_cleansing;
-	
-	@FindBy(xpath ="//input[@type='text']")
+
+	@FindBy(xpath = "//input[@type='text']")
 	public WebElementFacade search_text;
-	
-	@FindBy(xpath ="(//button[@type='button'])[2]")
+
+	@FindBy(xpath = "(//button[@type='button'])[2]")
 	public WebElementFacade go_button;
-	
 
-	@FindBy(xpath ="(//td[@class='align-middle orange font-weight-bold'])[1]")
+	@FindBy(xpath = "(//td[@class='align-middle orange font-weight-bold'])[1]")
 	public WebElementFacade edit_firs_div;
-	
-	@FindBy(xpath ="(//button[@class='loginButton cursor-pointer cna-edit-btn'])[1]")
-	public WebElementFacade edit_button;
-	
-	@FindBy(xpath ="(//input[@role='combobox'])[1]")
-	public WebElementFacade edit_company_name;
-	
-	@FindBy(xpath ="(//input[@role='combobox'])[2]")
-	public WebElementFacade edit_affiliated_name;
-	
-	@FindBy(xpath ="//button[@class='loginButton cursor-pointer cna-save-btn']")
-	public WebElementFacade edit_save_button;
-	
-	@FindBy(xpath ="//div[@id='tooltip']/div/span")
-	public WebElementFacade fetch_text;
-	
-	@FindBy(xpath ="//*[@id='abc']")
-	public WebElementFacade option_click;
-	
-	@FindBy(xpath ="//button[@class='swal-button swal-button--confirm']")
-	public WebElementFacade ok_click;
-	
-	@FindBy(xpath ="//div[@class='swal-text']")
-	public WebElementFacade verify_text;
-	
-	@FindBy(xpath ="//span[@class='cna-selectAll']")
-	public WebElementFacade selectall_button;
-	
-	@FindBy(xpath ="(//button[@type='button'])[4]")
-	public WebElementFacade apply_selection;
-	
-	@FindBy(xpath ="(//input[@value='Kroger'])[1]")
-	public WebElementFacade value_fetch;
-	
-	@FindBy(xpath ="(//i[@ class='material-icons tickMark'])[1]")
-	public WebElementFacade frst_checkbox;
-	
-	@FindBy(xpath ="//small[@class='fontSize12 form-text text-danger']")
-	public WebElementFacade login_errmsg;
-	
-	@FindBy(xpath ="//div[@class='noDataFound']")
-	public WebElementFacade inval_errmsg;
 
+	@FindBy(xpath = "(//button[@class='loginButton cursor-pointer cna-edit-btn'])[1]")
+	public WebElementFacade edit_button;
+
+	@FindBy(xpath = "(//input[@role='combobox'])[1]")
+	public WebElementFacade edit_company_name;
+
+	@FindBy(xpath = "(//input[@role='combobox'])[2]")
+	public WebElementFacade edit_affiliated_name;
+
+	@FindBy(xpath = "//button[@class='loginButton cursor-pointer cna-save-btn']")
+	public WebElementFacade edit_save_button;
+
+	@FindBy(xpath = "//div[@id='tooltip']/div/span")
+	public WebElementFacade fetch_text;
+
+	@FindBy(xpath = "//*[@id='abc']")
+	public WebElementFacade option_click;
+
+	@FindBy(xpath = "//button[@class='swal-button swal-button--confirm']")
+	public WebElementFacade ok_click;
+
+	@FindBy(xpath = "//div[@class='swal-text']")
+	public WebElementFacade verify_text;
+
+	@FindBy(xpath = "//span[@class='cna-selectAll']")
+	public WebElementFacade selectall_button;
+
+	@FindBy(xpath = "(//button[@type='button'])[4]")
+	public WebElementFacade apply_selection;
+
+	@FindBy(xpath = "(//input[@value='Kroger'])[1]")
+	public WebElementFacade value_fetch;
+
+	@FindBy(xpath = "(//i[@ class='material-icons tickMark'])[1]")
+	public WebElementFacade frst_checkbox;
+
+	@FindBy(xpath = "//small[@class='fontSize12 form-text text-danger']")
+	public WebElementFacade login_errmsg;
+
+	@FindBy(xpath = "//div[@class='noDataFound']")
+	public WebElementFacade inval_errmsg;
 
 	@FindBy(xpath = "(//button[@type='button'])[3]")
 	public WebElementFacade logout;
-
 
 	public WebElementFacade getUniqueElementInPage() {
 		return reset_link;
@@ -178,7 +173,7 @@ public class LoginPage extends PageObject {
 	public void verify__email_errors(String excepted) throws InterruptedException {
 		String actual = login_errmsg.getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
+		Assert.assertEquals(actual, excepted);
 
 	}
 
@@ -191,6 +186,7 @@ public class LoginPage extends PageObject {
 		CommonUtil.waitForElement(next);
 		next.click();
 	}
+
 	public void password_blank(String email) {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
@@ -202,6 +198,7 @@ public class LoginPage extends PageObject {
 		CommonUtil.waitForElement(submit);
 		submit.click();
 	}
+
 	public void valemail_with_two_attempts(String valemail, String invalpswrd) {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
@@ -292,7 +289,6 @@ public class LoginPage extends PageObject {
 			r.keyRelease(KeyEvent.VK_ESCAPE);
 			CommonUtil.waitForElement(inteligent_link);
 			inteligent_link.click();
-			
 
 		}
 	}
@@ -329,7 +325,7 @@ public class LoginPage extends PageObject {
 		gmail_frst_div.click();
 		WebElement element = getDriver().findElement(By.xpath("//center[3]/a"));
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-		CommonUtil.waitForElement(reset_link);
+//		CommonUtil.waitForElement(reset_link);
 		String token = reset_link.getText();
 		System.out.println(token);
 		String Code = getDriver().findElement(By.xpath("//center[3]/a")).getText();
@@ -341,7 +337,8 @@ public class LoginPage extends PageObject {
 		System.out.println(accesstoken);
 		CommonUtil.waitForElement(reset_link);
 		reset_link.click();
-		}
+	}
+
 	public void forgotemail_blank() {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
@@ -356,11 +353,16 @@ public class LoginPage extends PageObject {
 		submit.click();
 
 	}
+
 	public void verify_forgot_validemail() {
-		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-muted']")).getText();
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-muted']"))
+				.getText();
 		System.out.println(actual);
-		Assert.assertEquals("An email with detailed instructions on how to reset your password has been sent to *****@qwinix.io.", actual);
+		Assert.assertEquals(
+				"An email with detailed instructions on how to reset your password has been sent to *****@qwinix.io.",
+				actual);
 	}
+
 	public void forgot_invalemail(String invalemail) {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
@@ -395,7 +397,7 @@ public class LoginPage extends PageObject {
 	}
 
 	public void newpswrd_empty(String pswrd) {
-		
+
 		CommonUtil.waitForElement(confirm_password);
 		confirm_password.sendKeys(pswrd);
 		CommonUtil.waitForElement(reset_submit);
@@ -412,7 +414,8 @@ public class LoginPage extends PageObject {
 	}
 
 	public void verify_confirm_empty_pswrd() {
-		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 errorMsg form-text text-danger']")).getText();
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 errorMsg form-text text-danger']"))
+				.getText();
 		System.out.println(actual);
 		Assert.assertEquals("Confirm Password cannot be empty", actual);
 	}
@@ -445,12 +448,14 @@ public class LoginPage extends PageObject {
 		confirm_password.sendKeys("password");
 		CommonUtil.waitForElement(reset_submit);
 		reset_submit.click();
-}
+	}
+
 	public void verify_invalid_resetpswrd() {
 		String actual = getDriver().findElement(By.xpath("//*[@id='root']/div[1]/div/div[1]/small")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("Please enter valid password.", actual);
 	}
+
 	public void valid_resetpswrd() {
 		new_password.clear();
 		CommonUtil.waitForElement(new_password);
@@ -461,12 +466,13 @@ public class LoginPage extends PageObject {
 		CommonUtil.waitForElement(reset_submit);
 		reset_submit.click();
 	}
+
 	public void verify_valid_resetpswrd() {
 		String actual = getDriver().findElement(By.xpath("//*[@id='root']/div[1]/div/div/span[1]")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("You have successfully reset your password.", actual);
 	}
-	
+
 	public void blank_email_with_navigation() {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
@@ -474,6 +480,7 @@ public class LoginPage extends PageObject {
 		CommonUtil.waitForElement(next);
 		dot_button.click();
 	}
+
 	public void invalid_email_with_dot(String invalemail) {
 		hambarger_button.click();
 		CommonUtil.waitForElement(login);
@@ -483,6 +490,7 @@ public class LoginPage extends PageObject {
 		CommonUtil.waitForElement(next);
 		dot_button.click();
 	}
+
 	public void terms_condition() {
 		CommonUtil.waitForElement(checkbox_button);
 		checkbox_button.click();
@@ -490,14 +498,17 @@ public class LoginPage extends PageObject {
 		submit.click();
 		CommonUtil.waitForElement(ok_button);
 		ok_button.click();
-		
+
 	}
+
 	public void verify_terms_condition() {
-		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']"))
+				.getText();
 		System.out.println(actual);
 		Assert.assertEquals("Please Accept terms & Conditions", actual);
 	}
-	public void valid_with_term_condition(String valemail,String valpswrd) {
+
+	public void valid_with_term_condition(String valemail, String valpswrd) {
 		hambarger_button.click();
 		login.click();
 		loginemail.sendKeys(valemail);
@@ -506,19 +517,22 @@ public class LoginPage extends PageObject {
 		checkbox_button.click();
 		submit.click();
 		ok_button.click();
-		
+
 	}
+
 	public void verify_forgot_in_at_email() {
-		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']")).getText();
+		String actual = getDriver().findElement(By.xpath("//small[@class='fontSize12 form-text text-danger']"))
+				.getText();
 		System.out.println(actual);
 		Assert.assertEquals("Please enter the correct Email ID", actual);
 	}
+
 	public void verify_succesful_text() {
 		String actual = getDriver().findElement(By.xpath("//div[@class='swal-text']")).getText();
 		System.out.println(actual);
 		Assert.assertEquals("Record Saved Successfully.", actual);
 	}
-	
+
 	public void search_empty_data() throws InterruptedException {
 		data_cleansing.click();
 		search_text.click();
@@ -527,9 +541,8 @@ public class LoginPage extends PageObject {
 		System.out.println(text);
 
 	}
-	
-	public void edit_text(String excepted) throws InterruptedException 
-	{
+
+	public void edit_text(String excepted) throws InterruptedException {
 		search_text.sendKeys("ama");
 		go_button.click();
 		onMouseover();
@@ -543,44 +556,51 @@ public class LoginPage extends PageObject {
 		option_click.click();
 		edit_save_button.click();
 	}
-	public void verify_number_of_records(String excepted)
-	{
+
+	public void verify_number_of_records(String excepted) {
 		String actual = getDriver().findElement(By.xpath("//span[@class='cna-action-text']")).getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
-		
+		Assert.assertEquals(actual, excepted);
+
 	}
+
 	public void onMouseover() {
-		
+
 		Actions action = new Actions(getDriver());
-		action.moveToElement(getDriver().findElement(By.xpath("(//td[@class='align-middle orange font-weight-bold'])[1]"))).click().build().perform();
+		action.moveToElement(
+				getDriver().findElement(By.xpath("(//td[@class='align-middle orange font-weight-bold'])[1]"))).click()
+				.build().perform();
 		getDriver().findElement(By.xpath("(//button[@class='loginButton cursor-pointer cna-edit-btn'])[1]")).click();
-		
+
 	}
+
 	public void no_name_selected(String excepted) {
 		String actual = verify_text.getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
-		
+		Assert.assertEquals(actual, excepted);
+
 	}
+
 	public void succesfuly_record_saved(String excepted) throws InterruptedException {
 		Thread.sleep(2000);
 		String actual = verify_text.getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
+		Assert.assertEquals(actual, excepted);
 	}
-	
+
 	public void Select_all_cleansing_data_empty() {
 		data_cleansing.click();
 		search_text.sendKeys("ama");
 		go_button.click();
 		selectall_button.click();
 		apply_selection.click();
-		}
+	}
+
 	public void error_msg(String excepted) {
 		no_name_selected(excepted);
 		ok_click.click();
 	}
+
 	public void select_all_cleansing_data() {
 		data_cleansing.click();
 		search_text.sendKeys("ama");
@@ -592,44 +612,47 @@ public class LoginPage extends PageObject {
 		option_click.click();
 		frst_checkbox.click();
 		frst_checkbox.click();
-		String value =  value_fetch.getAttribute("value");
+		String value = value_fetch.getAttribute("value");
 		System.out.println(value);
-		Assert.assertEquals("Kroger",value);
+		Assert.assertEquals("Kroger", value);
 		apply_selection.click();
 	}
+
 	public void succesfuly_records_saved(String excepted) throws InterruptedException {
 		Thread.sleep(2000);
 		String actual = inval_errmsg.getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
+		Assert.assertEquals(actual, excepted);
 	}
+
 	public void seach_lessthan_chars() {
 		data_cleansing.click();
 		search_text.sendKeys("am");
 		go_button.click();
-		
+
 	}
-	
+
 	public void verify_tooltip_msg(String excepted) {
 		String actual = fetch_text.getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
-		
+		Assert.assertEquals(actual, excepted);
+
 	}
+
 	public void serach_invaldata() {
 		data_cleansing.click();
 		search_text.sendKeys("gfh");
 		go_button.click();
 	}
-	
+
 	public void verify_invalid_msg(String excepted) throws InterruptedException {
 		Thread.sleep(2000);
 		String actual = inval_errmsg.getText();
 		System.out.println("Actual--->" + actual + "  Expected--->" + excepted);
-		Assert.assertEquals(actual,excepted);
-		
+		Assert.assertEquals(actual, excepted);
+
 	}
-	
+
 	public void logout() {
 		hambarger_button.click();
 		logout.click();
